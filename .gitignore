@@ -1,0 +1,17 @@
+/*
+!/hypr
+!/kitty
+!/dunst
+!/fish
+!/swaylock
+!/waybar
+!/wofi
+!/gtk-3.0
+!/qt5ct
+!/qt6ct
+!/xsettingsd
+!chromium-flags.conf
+!electron-flags.conf
+!code-flags.conf
+!.gitignore
+!README.md
