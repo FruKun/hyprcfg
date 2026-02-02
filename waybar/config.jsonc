@@ -8,23 +8,20 @@
 
     // Choose the order of the modules
     "modules-left": [
-	    "custom/weather",
-	    "cpu",
 	"memory",
 	"temperature",
 	"hyprland/workspaces",
-	"hyprland/window"
     ],
     "modules-center": [
         "clock"
     ],
     "modules-right": [
-	"custom/player",
         "hyprland/language",
         "pulseaudio",
         "backlight",
         "battery",
-        "tray"
+        "tray",
+        "custom/notification"
     ],
 
    // Modules configuration
@@ -99,14 +96,40 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    
+    "network": {
+    // "interface": "wlan*",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "format": "{icon} {essid}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "nmgui"
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": "",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "blueman-manager"
+  },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}",
 	//"format-bluetooth": "{volume}% {icon} {format_source}",
         //"format-bluetooth-muted": " {icon} {format_source}",
         //"format-muted": " {format_source}",
-    	"format-muted": "婢",
+        "format-muted": "",
         "format-source": "",
         //"format-source": "{volume}% ",
         //"format-source-muted": "",
@@ -122,23 +145,34 @@
         },
         "on-click": "pavucontrol"
     },
-    
-    "custom/weather": {
-	//yay -S python-requests
-        "exec": "python3 ~/.config/waybar/Scripts/weather.py",
-        "restart-interval": 300,
-        "return-type": "json",
-        "on-click": "xdg-open https://yandex.ru/pogoda/"
-    },
-    "custom/player": {
-        "exec": "bash ~/.config/waybar/Scripts/player.sh",
-        "format": "{}",
-        "max-length": 74,
-        "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl next",
-        "on-double-click-right": "playerctl previous",
-	"escape": true
+  "mpris": {
+    "format": "{artist} - {title} {player_icon}",
+    "format-paused": "{status_icon} {artist} - {title}</i>",
+    "player-icons": {
+      "default": "",
+      // "mpv": ""
     }
+  },
+    "custom/notification": {
+    "tooltip": true,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
 }
 
 
