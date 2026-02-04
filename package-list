@@ -2,6 +2,7 @@ chromium
 firefox
 spotify-launcher
 telegram-desktop
+pyenv
 zed
 brightnessctl
 btop
@@ -24,7 +25,9 @@ swaybg
 swayidle
 swaylock
 swaync
+uwsm
 waybar
+wofi
 blueman
 pavucontrol
 thunar

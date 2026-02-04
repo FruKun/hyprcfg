@@ -67,6 +67,7 @@ window#waybar {
 
 #cpu,
 #disk,
+#temperature,
 #memory,
 #battery,
 #network,

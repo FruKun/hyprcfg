@@ -1,5 +1,5 @@
 # uwsm
-if uwsm check may-start && uwsm select; then
+if uwsm check may-start 1>/dev/null && uwsm select; then
 	exec uwsm start default
 fi
 # end uwsm
